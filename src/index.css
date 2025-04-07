@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom base styles */
+body {
+  @apply font-sans antialiased text-reddit-text bg-reddit-light;
+}
+
+body.dark {
+  @apply bg-reddit-dark text-reddit-text-dark;
+}
+
+/* Custom utility classes */
+@layer utilities {
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .no-underline {
+    text-decoration: none;
+  }
+}
