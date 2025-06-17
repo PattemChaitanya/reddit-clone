@@ -1,14 +1,15 @@
-import React, { useEffect } from "react";
-import { Routes, Route, useLocation } from "react-router-dom";
-import { useSelector } from "react-redux";
 import { Box } from "@mui/material";
+import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { Routes, Route, useLocation } from "react-router-dom";
+
 import Header from "./components/Header";
 import HomePage from "./pages/HomePage";
-import SubredditPage from "./pages/SubredditPage";
+import NotFoundPage from "./pages/NotFoundPage";
 import PostDetailPage from "./pages/PostDetailPage";
 import SearchResultsPage from "./pages/SearchResultsPage";
+import SubredditPage from "./pages/SubredditPage";
 import UserProfilePage from "./pages/UserProfilePage";
-import NotFoundPage from "./pages/NotFoundPage";
 import { RootState } from "./store";
 
 const App: React.FC = () => {

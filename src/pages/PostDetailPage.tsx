@@ -21,12 +21,12 @@ import { api } from "../services/api";
 import { Post, Comment } from "../types";
 // These imports are commented out since they're not currently used
 // Uncomment them when switching to RTK Query implementation
-import // useGetPostQuery,
+// import useGetPostQuery,
 // useGetSubredditQuery,
 // useVotePostMutation,
 // useAddCommentMutation,
 // useVoteCommentMutation,
-"../store/api";
+// "../store/api";
 
 const PostDetailPage: React.FC = () => {
   const { subreddit, postId } = useParams<{
@@ -60,7 +60,9 @@ const PostDetailPage: React.FC = () => {
           return;
         }
 
-        const data = await api.getPost(postId);
+        const subredditQuery = subreddit || "all";
+
+        const data = await api.getPost(postId, subredditQuery);
 
         if (!data) {
           setError("Post not found.");

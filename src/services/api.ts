@@ -8,7 +8,6 @@ const API_URL = "https://apigateway-k2jc5kdq2a-uc.a.run.app";
 // Helper for API requests
 const fetchApi = async (endpoint: string, options = {}) => {
   const response = await fetch(`${API_URL}${endpoint}`, options);
-  console.log(response, "response", `${API_URL}${endpoint}`);
   if (!response.ok) {
     const errorData = await response.json();
     throw new Error(errorData.error || "API request failed");
@@ -118,12 +117,13 @@ export const api = {
   },
 
   async getPost(
-    postId: string
+    postId: string,
+    subredditQuery: string
   ): Promise<{ post: Post; comments: Comment[] } | null> {
     // We need to extract subreddit from the post ID or use a generic endpoint
     // For now, we'll use a search to find the post first
     const searchResponse = await fetchApi(
-      `/api/v1/reddit/search/posts?q=id:${postId}&limit=1`
+      `/api/v1/reddit/search/posts?subreddit=${subredditQuery}&q=${postId}&limit=1`
     );
     if (!searchResponse.success || searchResponse.data.length === 0) {
       return null;
